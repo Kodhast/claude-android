@@ -1,6 +1,6 @@
 ---
 name: arbetsregler
-description: "Mats gemensamma arbetsregler för alla projekt (Android-repona, android-ui, Husjakt, VeckansMat) – när en plan i ett issue och hans ok krävs före kod, när en tråd mergar själv, instabila tester, ärliga svar, modell efter jobbet, tider i svensk tid, tokentak och agenter. Ladda innan arbete påbörjas eller planeras, innan en PR skapas eller mergas, och när det är oklart om något kräver ett ok. Trigger-ord: fråga, bekräfta, driva igenom, en PR i taget, svenska, tid, klockslag, UTC, tokentak, pausa, agenter, parallellt, plan, issue, godkänd, plan-godkänd, kör, ok, liten ändring, merga, PR, får jag, vänta på ok, ärliga svar, modell, agent, instabilt test, flaky, omkörning, rött CI."
+description: "Mats gemensamma arbetsregler för alla projekt (Android-repona, android-ui, Husjakt, VeckansMat) – när en plan i ett issue och hans ok krävs före kod, när en tråd mergar själv, instabila tester, ärliga svar, modell efter jobbet, tider i svensk tid, tokentak, byte till ny tråd och agenter. Ladda innan arbete påbörjas eller planeras, innan en PR skapas eller mergas, och när det är oklart om något kräver ett ok. Trigger-ord: fråga, bekräfta, driva igenom, en PR i taget, svenska, tid, klockslag, UTC, tokentak, pausa, ny tråd, lång tråd, överlämning, kontext, agenter, parallellt, plan, issue, godkänd, plan-godkänd, kör, ok, liten ändring, merga, PR, får jag, vänta på ok, ärliga svar, modell, agent, instabilt test, flaky, omkörning, rött CI."
 ---
 
 # Gemensamma arbetsregler (alla Mats projekt)
@@ -83,6 +83,16 @@ cron-uttryck och tidsstämplar i filer ändras inte.
   mening och fortsätt där det slutade när nya tokens finns – utan att fråga om det som redan är
   avgjort. Inget lämnas halvgjort eller avrundas i förtid. Kan sessionen schemalägga sin
   återkomst gör den det.
+- **Ny tråd när tråden blivit lång (Mats 2026-11-15).** Varje steg läser om hela kontexten, så
+  en lång tråd blir dyr per steg (flytten till Kodhast nådde ~330 000 tokens). Byt när något av
+  detta inträffar: kontexten passerar **~150 000 tokens**, sammanhanget har komprimerats en
+  gång, eller **tre PR:er** är mergade i tråden – och det finns mer kvar att göra. Byt aldrig
+  mitt i ett steg: pågående PR mergas eller pushas först. Överlämningen skrivs som en kommentar
+  i issuet (eller planen): läget, kvarvarande steg i ordning, öppna beslut och fynd, och vad
+  som redan körts. I en projekttråd ber tråden koordinatorn starta en ny tråd med länken och
+  föreslagen modell för det som återstår (`ai-model-choice`, ofta lättare än början), säger det
+  till Mats i en mening och avslutar. Utanför projekt: samma kommentar, och Mats startar den nya
+  sessionen.
 - **Agenter parallellt är tillåtet, inte förval.** Använd dem för oberoende delar (egna filer
   eller en egen worktree) när det sparar verklig tid; en tråd som klarar jobbet själv gör det
   själv, eftersom varje agent kostar tokens. Granska agentens resultat och kör kontrollerna
