@@ -27,7 +27,7 @@ Alla publika repon har secret scanning, push protection och regeln *Restrictions
 
 | Konto | Plan | Vad som ligger där | Konsol |
 |---|---|---|---|
-| GitHub `ParTee71` | Free | alla repon, Actions, Packages | [github.com/ParTee71](https://github.com/ParTee71) |
+| GitHub-organisationen `Kodhast` (ägare: `ParTee71`) | Free (inte kontrollerat mot kontot) | alla repon, Actions, Packages. Flyttade från `ParTee71` 2026-11-15; gamla adresser leder vidare | [github.com/Kodhast](https://github.com/Kodhast) |
 | Firebase / Google Cloud | Spark (gratis) | ett projekt per app: `reseapoteket`, `dagboken-711d2` (Dagboken och tills vidare fonder) | [console.firebase.google.com](https://console.firebase.google.com/) |
 | Cloudflare | Workers Free | Husjakt och VeckansMat | [dash.cloudflare.com](https://dash.cloudflare.com/) |
 | Claude | – | projekten och molnmiljöerna | [claude.ai/code](https://claude.ai/code) |
@@ -57,11 +57,11 @@ Bara namnen. Ta fram listan på nytt med
 
 | Repo | Hemligheter | Ger åtkomst till |
 |---|---|---|
-| [ReseApoteket](https://github.com/ParTee71/ReseApoteket/settings/secrets/actions) | `FIREBASE_SERVICE_ACCOUNT`, `FIREBASE_RULES_DEPLOYER`, `BACKUP_PASSPHRASE`, `GOOGLE_SERVICES_JSON`, `GPR_TOKEN`, `SIGNING_*` (4) | Firestore (läs/backup), rules-deploy, backupkryptering, appkonfig, android-ui-paketen, release-signering |
-| [Dagboken](https://github.com/ParTee71/Dagboken/settings/secrets/actions) | `FIREBASE_SERVICE_ACCOUNT`, `FIREBASE_RULES_DEPLOYER`, `BACKUP_PASSPHRASE`, `GPR_TOKEN`, `SIGNING_*` (4) | samma som ovan |
-| [fonder](https://github.com/ParTee71/fonder/settings/secrets/actions) | `GPR_TOKEN`, `SIGNING_*` (4) | android-ui-paketen, release-signering |
-| [Husjakt](https://github.com/ParTee71/Husjakt/settings/secrets/actions) | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `D1_DATABASE_ID`, `GEOTORGET_ANVANDARE`, `GEOTORGET_LOSENORD` | Worker/D1/R2/Pages-deploy, Lantmäteriets adressdata |
-| [VeckansMat](https://github.com/ParTee71/VeckansMat/settings/secrets/actions) | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | Worker-deploy |
+| [ReseApoteket](https://github.com/Kodhast/ReseApoteket/settings/secrets/actions) | `FIREBASE_SERVICE_ACCOUNT`, `FIREBASE_RULES_DEPLOYER`, `BACKUP_PASSPHRASE`, `GOOGLE_SERVICES_JSON`, `GPR_TOKEN`, `SIGNING_*` (4) | Firestore (läs/backup), rules-deploy, backupkryptering, appkonfig, android-ui-paketen, release-signering |
+| [Dagboken](https://github.com/Kodhast/Dagboken/settings/secrets/actions) | `FIREBASE_SERVICE_ACCOUNT`, `FIREBASE_RULES_DEPLOYER`, `BACKUP_PASSPHRASE`, `GPR_TOKEN`, `SIGNING_*` (4) | samma som ovan |
+| [fonder](https://github.com/Kodhast/fonder/settings/secrets/actions) | `GPR_TOKEN`, `SIGNING_*` (4) | android-ui-paketen, release-signering |
+| [Husjakt](https://github.com/Kodhast/Husjakt/settings/secrets/actions) | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `D1_DATABASE_ID`, `GEOTORGET_ANVANDARE`, `GEOTORGET_LOSENORD` | Worker/D1/R2/Pages-deploy, Lantmäteriets adressdata |
+| [VeckansMat](https://github.com/Kodhast/VeckansMat/settings/secrets/actions) | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | Worker-deploy |
 | android-ui, claude-android | inga (publiceringen använder `GITHUB_TOKEN`) | – |
 
 **Rotera en nyckel:** skapa den nya hos leverantören (Firebase: servicekontot → Keys; Cloudflare:
@@ -79,7 +79,7 @@ nycklar syns för alla repon i projektet. Listorna hålls därför korta.
 | Appprojekt (ReseApoteket, Dagboken, fonder …) | bara sitt eget repo | Android (även Dagboken, läst 2026-11-13) |
 | VeckansMat, Husjakt | bara sitt eget repo | Webb |
 
-Pluginen kommer från claude.ai-kontot (Customize → Plugins, marknadsplatsen `partee71/claude-android`
+Pluginen kommer från claude.ai-kontot (Customize → Plugins, marknadsplatsen `Kodhast/claude-android`
 med automatisk synk), så claude-android behöver inte stå i appprojekten (#69, README →
 *Installation → I molnsessioner*, enda källan för setup-blocket). android-ui läses som Maven-paket
 med `GPR_TOKEN` och behöver inte heller stå där.

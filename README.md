@@ -138,7 +138,7 @@ claude.ai-kontot (#69). Tyst när allt stämmer.
 Molnsessioner och projekttrådar installerar **aldrig** ett repos `enabledPlugins`. Pluginen kommer
 i stället från **claude.ai-kontot**, som Anthropic anvisar för molntrådar (#69):
 
-1. claude.ai → Customize → Plugins → Add → **Add marketplace** → `partee71/claude-android`, med
+1. claude.ai → Customize → Plugins → Add → **Add marketplace** → `Kodhast/claude-android`, med
    **Sync automatically** påslaget.
 2. Lägg till pluginen `android` från den marknadsplatsen.
 
@@ -158,7 +158,7 @@ Skriptet gör bara det som inte går via kontot – repons hookar och spärrar, 
   CA=/home/user/claude-android
   [ -d "$CA" ] || { CA=/opt/claude-android
     if [ -d "$CA/.git" ]; then git -C "$CA" pull -q --ff-only
-    else git clone --depth 1 https://github.com/partee71/claude-android "$CA"; fi; }
+    else git clone --depth 1 https://github.com/Kodhast/claude-android "$CA"; fi; }
   claude plugin marketplace remove claude-android || true
   node "$CA/scripts/repo-plugins.mjs" /home/user
   bash "$CA/scripts/android-sdk.sh"
@@ -248,14 +248,14 @@ repos Maven-paket. Se skill `android-gradle-logic`.
 
 ### Lokalt
 
-    /plugin install android --marketplace ParTee71/claude-android
+    /plugin install android --marketplace Kodhast/claude-android
 
 eller låt repot slå på pluginen i `.claude/settings.json`, vilket fungerar lokalt:
 
 ```json
 {
   "extraKnownMarketplaces": {
-    "claude-android": { "source": { "source": "github", "repo": "ParTee71/claude-android" } }
+    "claude-android": { "source": { "source": "github", "repo": "Kodhast/claude-android" } }
   },
   "enabledPlugins": { "android@claude-android": true }
 }
