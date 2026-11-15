@@ -35,7 +35,7 @@ test('sdk.dir läggs till en gång och rör inte en befintlig rad', () => {
 
 test('GPR_TOKEN behövs bara när settings.gradle.kts hämtar från GitHub Packages', () => {
   const base = mkdtempSync(path.join(tmpdir(), 'as-'));
-  assert.equal(needsGpr(androidRepo(base, 'app', 'url = uri("https://maven.pkg.github.com/partee71/android-ui")')), true);
+  assert.equal(needsGpr(androidRepo(base, 'app', 'url = uri("https://maven.pkg.github.com/Kodhast/android-ui")')), true);
   assert.equal(needsGpr(androidRepo(base, 'lib', 'rootProject.name = "x"')), false);
 });
 

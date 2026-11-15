@@ -31,8 +31,8 @@ på kravlistan, README och versionen.
 - Öppna en syskon-ViewModel/skärm/repository och följ dess form (skill `android:android-dev`).
 - Slå upp komponenter, ramar och byggstenar i repots skill `shared-ui-components`. Rör du en
   känd dubblett – slå ihop den först. Saknas något delat → egen commit före funktionen.
-- Delen finns i **android-ui** (import `se.partee71.ui.*`) → ändringen görs där, inte i appen
-  (skill `android-dev` → android-ui): PR i ParTee71/android-ui med test, skärmdump och höjd
+- Delen finns i **android-ui** (import `se.kodhast.ui.*`) → ändringen görs där, inte i appen
+  (skill `android-dev` → android-ui): PR i Kodhast/android-ui med test, skärmdump och höjd
   version → merge → tagg `v<version>` (publicerar) → appens PR höjer versionen i katalogen.
   Appens PR väntar tills versionen är publicerad.
 - Data → repots skill `data-safety-backup`; domänskills (beräkningar, larm, externa källor):
