@@ -1,9 +1,9 @@
 {
   "name": "claude-android",
   "owner": {
-    "name": "ParTee71"
+    "name": "Kodhäst"
   },
-  "description": "Claude Code-pluginer för ParTee71:s Android-appar",
+  "description": "Claude Code-pluginer för Kodhästs Android-appar",
   "plugins": [
     {
       "name": "android",

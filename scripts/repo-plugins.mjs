@@ -93,7 +93,7 @@ export function build(base, out = path.join(base, '.repo-plugins')) {
   }
   writeFileSync(path.join(out, '.claude-plugin/marketplace.json'), JSON.stringify({
     name: MARKETPLACE,
-    owner: { name: 'ParTee71' },
+    owner: { name: 'Kodhäst' },
     plugins: plugins.map((name) => ({ name, source: `./${name}` })),
   }, null, 2));
   return { out, plugins };

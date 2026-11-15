@@ -183,14 +183,14 @@ test('vakten vid Bash: pekas inget repo ut körs hooken', () => {
 });
 
 test('vakten vid GitHub-verktyg: bara repots eget origin kör hooken', () => {
-  assert.equal(slug('https://github.com/ParTee71/VeckansMat'), 'partee71/veckansmat');
-  assert.equal(slug('git@github.com:ParTee71/VeckansMat.git'), 'partee71/veckansmat');
-  assert.equal(slug('http://proxy@127.0.0.1:8080/git/ParTee71/VeckansMat/'), 'partee71/veckansmat');
+  assert.equal(slug('https://github.com/Kodhast/VeckansMat'), 'kodhast/veckansmat');
+  assert.equal(slug('git@github.com:Kodhast/VeckansMat.git'), 'kodhast/veckansmat');
+  assert.equal(slug('http://proxy@127.0.0.1:8080/git/Kodhast/VeckansMat/'), 'kodhast/veckansmat');
   assert.equal(slug(''), null);
-  const origin = 'https://github.com/ParTee71/VeckansMat';
-  assert.equal(otherGithubRepo('/x', { owner: 'partee71', repo: 'claude-android', body: 'Closes #35' }, origin), true);
-  assert.equal(otherGithubRepo('/x', { owner: 'partee71', repo: 'veckansmat' }, origin), false);
-  assert.equal(otherGithubRepo('/x', { owner: 'ParTee71', repo: 'VeckansMat' }, null), false); // okänt origin: kör
+  const origin = 'https://github.com/Kodhast/VeckansMat';
+  assert.equal(otherGithubRepo('/x', { owner: 'kodhast', repo: 'claude-android', body: 'Closes #35' }, origin), true);
+  assert.equal(otherGithubRepo('/x', { owner: 'kodhast', repo: 'veckansmat' }, origin), false);
+  assert.equal(otherGithubRepo('/x', { owner: 'Kodhast', repo: 'VeckansMat' }, null), false); // okänt origin: kör
   assert.equal(otherGithubRepo('/x', { command: 'ls' }, origin), false); // inget GitHub-verktyg
 });
 
@@ -199,10 +199,10 @@ test('vakten vid GitHub-verktyg: en PR i ett annat repo når inte repots hook', 
   const vm = path.join(base, 'VeckansMat');
   mkdirSync(vm);
   git(vm, 'init', '-q');
-  git(vm, 'remote', 'add', 'origin', 'https://github.com/ParTee71/VeckansMat');
+  git(vm, 'remote', 'add', 'origin', 'https://github.com/Kodhast/VeckansMat');
   const pr = (owner, name) => ({ hook_event_name: 'PreToolUse', tool_name: 'mcp__github__create_pull_request', tool_input: { owner, repo: name, body: 'Closes #35' } });
-  assert.equal(shouldRun(vm, pr('partee71', 'claude-android'), base), false);
-  assert.equal(shouldRun(vm, pr('ParTee71', 'VeckansMat'), base), true);
+  assert.equal(shouldRun(vm, pr('kodhast', 'claude-android'), base), false);
+  assert.equal(shouldRun(vm, pr('Kodhast', 'VeckansMat'), base), true);
 });
 
 test('vakten kör hooken med repot som rot och för vidare utdata och exitkod', () => {
