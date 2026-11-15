@@ -32,12 +32,12 @@ You are a senior Android engineer. Apply the following guidelines to all Android
 ## Gemensamt komponentbibliotek: android-ui
 
 ReseApoteket och Dagboken hämtar tema-API och delade komponenter från biblioteket
-**ParTee71/android-ui** (`se.partee71.ui:ui-theme`, `se.partee71.ui:ui-components`, senare
+**Kodhast/android-ui** (`se.kodhast.ui:ui-theme`, `se.kodhast.ui:ui-components`, senare
 `ui-common`) via GitHub Packages. Vilka delar en app redan hämtar därifrån och vilken version
 står i appens versionskatalog och skill `shared-ui-components`.
 
 - **Sök i biblioteket först.** Innan en komponent, ett tema-värde eller en ram byggs eller ändras
-  i appen: finns den i android-ui (`se.partee71.ui.*`), använd den.
+  i appen: finns den i android-ui (`se.kodhast.ui.*`), använd den.
 - **En variant blir en parameter i biblioteket, aldrig en lokal kopia** (regel 4). Parametern får
   en default som bevarar dagens utseende i båda apparna, med test och skärmdump i biblioteket.
 - **Ändra en delad komponent i biblioteket, inte i appen.** Flödet är: PR i android-ui med höjd

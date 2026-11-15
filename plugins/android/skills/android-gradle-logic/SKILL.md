@@ -38,7 +38,7 @@ Appar som hämtar biblioteket android-ui lägger GitHub Packages-repot i `settin
 (`dependencyResolutionManagement.repositories`), filtrerat till gruppen så att inget annat söks där:
 
 ```kotlin
-maven("https://maven.pkg.github.com/ParTee71/android-ui") {
+maven("https://maven.pkg.github.com/Kodhast/android-ui") {
     name = "androidUi"
     credentials {
         username = providers.environmentVariable("GPR_USER")
@@ -46,7 +46,7 @@ maven("https://maven.pkg.github.com/ParTee71/android-ui") {
         password = providers.environmentVariable("GPR_TOKEN")
             .orElse(providers.environmentVariable("GITHUB_TOKEN")).orNull
     }
-    content { includeGroup("se.partee71.ui") }
+    content { includeGroup("se.kodhast.ui") }
 }
 ```
 
@@ -58,7 +58,7 @@ maven("https://maven.pkg.github.com/ParTee71/android-ui") {
 - **Molnsessioner** läser med `GPR_USER`/`GPR_TOKEN` (classic token med bara `read:packages`) från
   miljöns variabler. Lokalt: samma variabler eller `~/.gradle/gradle.properties`.
 - Token checkas aldrig in, loggas aldrig och klistras aldrig in i chatten.
-- **Felet "Could not resolve se.partee71.ui:…" med 401** betyder att token saknas eller är fel:
+- **Felet "Could not resolve se.kodhast.ui:…" med 401** betyder att token saknas eller är fel:
   kontrollera att `GPR_TOKEN` finns i miljön (`test -n "$GPR_TOKEN"`) och att sessionen startades
   efter att den lades in. **403** betyder att token saknar `read:packages` eller att CI läser med `GITHUB_TOKEN` i stället för `GPR_TOKEN`.
 - **Prova token först i CI.** Varje jobb som löser android-ui börjar med ett steg som provar
@@ -71,11 +71,15 @@ maven("https://maven.pkg.github.com/ParTee71/android-ui") {
       GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
     run: |
       code=$(curl -s -o /dev/null -w '%{http_code}' -u "x:$GPR_TOKEN" \
-        "https://maven.pkg.github.com/ParTee71/android-ui/se/partee71/ui/ui-theme/maven-metadata.xml")
+        "https://maven.pkg.github.com/Kodhast/android-ui/se/kodhast/ui/ui-theme/maven-metadata.xml")
       case "$code" in 200|302) ;; *) echo "::error::GPR_TOKEN fungerar inte (HTTP $code) – lägg in secreten på nytt (classic token, read:packages)"; exit 1;; esac
   ```
 
   Molnsessionens token provas på samma sätt (`302`/`200` = ok, `401` = fel värde).
+- **Före 1.0.0** hette gruppen `se.partee71.ui` och adressen `ParTee71/android-ui`. Den gamla
+  paketadressen svarar 404 sedan repot flyttades till Kodhast (mätt 2026-11-15); versionerna till
+  och med 0.10.0 hämtas från den nya adressen under det gamla gruppnamnet, så en app som inte bytt
+  har båda grupperna i `includeGroup` tills den gått över till 1.0.0.
 - Bibliotekets version står i appens `libs.versions.toml` (`androidUi = "x.y.z"`) som alla andra.
 
 ## Modules
