@@ -135,7 +135,8 @@ Kan du inte köra den är du inte klar.
   versionsregeln på nytt; höj bara om PR:en är allvarligare. Kod: lös bara när båda sidornas
   avsikt är tydlig, annars fråga Mats med filerna och vad som krockar. Kör kontrollerna, pusha.
 - **Rött CI** → repots ci-doktor diagnostiserar; rätta grundorsaken (svår att hitta: `felsokning`)
-  och pusha. Kör aldrig bara om. En omkörning startas först när hela körningen är klar (ett jobb som går kvar gör att en
+  och pusha. Är samma jobb rött en andra gång i rad startas agenten innan nästa push, även om
+  huvudsessionen tror sig se orsaken – ingen tredje push på en gissning. Kör aldrig bara om. En omkörning startas först när hela körningen är klar (ett jobb som går kvar gör att en
   omkörning mitt i slutar i `startup_failure`), och bara när orsaken är åtgärdad utanför koden.
 - **Merge:** när alla kontroller på senaste commit är gröna (ett hoppat jobb är okej, rött eller
   avbrutet inte) och `mergeable_state` inte är `dirty`, mergar tråden själv enligt
