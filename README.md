@@ -106,10 +106,14 @@ ReseApoteket; därefter 2 s per fil). Faller Gradle av annat skäl står felets 
 (CI-budgeten), så hooken är det som fångar brotten innan push.
 
 Varje besked från hookarna (en regel 4-träff, en Stop-blockering per repo, ett ktlint-brott,
-en påminnelse eller ett fynd i självkontrollen) skriver en rad till `/tmp/claude-hooks.log` (eller `$CLAUDE_HOOKS_LOG`): tid,
-hook, regel och repo, tabbseparerade. Filinnehåll och kod skrivs aldrig, och en logg som inte går att
-skriva stoppar aldrig hooken. Veckomätningen läser filen, eftersom PostToolUse-beskeden inte syns i
-sessionens händelseström.
+en påminnelse, ett fynd i självkontrollen eller självkontrollens ok-rad) skriver en rad till
+beskedloggen: tid, hook, regel och repo, tabbseparerade. Filinnehåll och kod skrivs aldrig, och en
+logg som inte går att skriva stoppar aldrig hooken. Var loggen ligger: `$CLAUDE_HOOKS_LOG` om den är
+satt; annars i projekttrådar en fil per session och dag i `/mnt/project-files/hooklogg/` (den mappen
+överlever tråden, #87); annars `/tmp/claude-hooks.log`. Veckomätningen läser loggen, eftersom
+PostToolUse-beskeden inte syns i sessionens händelseström, och tar bort filer äldre än 14 dagar.
+Självkontrollens ok-rad visar att hookarna alls kördes – utan den går tystnad inte att skilja från
+en hook som aldrig startade.
 
 `hooks/setup-check.mjs` körs vid sessionsstart och säger till i sessionens sammanhang när
 uppsättningen inte är den som beskrivs här: en plugin som inte gick att ladda (`claude plugin list`
