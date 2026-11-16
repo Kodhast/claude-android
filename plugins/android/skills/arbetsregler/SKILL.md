@@ -1,6 +1,6 @@
 ---
 name: arbetsregler
-description: "Mats gemensamma arbetsregler för alla projekt (Android-repona, android-ui, Husjakt, VeckansMat) – när en plan i ett issue och hans ok krävs före kod, när en tråd mergar själv, instabila tester, ärliga svar, modell efter jobbet, tider i svensk tid, tokentak, byte till ny tråd och agenter. Ladda innan arbete påbörjas eller planeras, innan en PR skapas eller mergas, och när det är oklart om något kräver ett ok. Trigger-ord: fråga, bekräfta, driva igenom, en PR i taget, svenska, tid, klockslag, UTC, tokentak, pausa, ny tråd, lång tråd, överlämning, kontext, agenter, parallellt, plan, issue, godkänd, plan-godkänd, kör, ok, liten ändring, merga, PR, får jag, vänta på ok, ärliga svar, modell, agent, instabilt test, flaky, omkörning, rött CI."
+description: "Mats gemensamma arbetsregler för alla projekt (Android-repona, android-ui, Husjakt, VeckansMat) – när en plan i ett issue och hans ok krävs före kod, när en tråd mergar själv, instabila tester, ärliga svar, modell efter jobbet, tider i svensk tid, tokentak, byte till ny tråd, agenter och direktlänkar till sidan Mats ska göra något på. Ladda innan arbete påbörjas eller planeras, innan en PR skapas eller mergas, och när det är oklart om något kräver ett ok. Trigger-ord: fråga, bekräfta, driva igenom, en PR i taget, svenska, tid, klockslag, UTC, tokentak, pausa, ny tråd, lång tråd, överlämning, kontext, agenter, parallellt, plan, issue, godkänd, plan-godkänd, kör, ok, liten ändring, merga, PR, får jag, vänta på ok, ärliga svar, modell, agent, instabilt test, flaky, omkörning, rött CI, länk, instruktion, Cloudflare, inställning."
 ---
 
 # Gemensamma arbetsregler (alla Mats projekt)
@@ -61,6 +61,18 @@ Ett test som ibland faller utan att koden ändrats kostar en körning varje gån
 
 Säg emot när Mats har fel, och säg varför. Inget beröm för frågan, inga artighetsfraser, inga
 ursäkter, ingen utfyllnad. Säg vad som är osäkert eller inte kontrollerat. Ett nej mjukas inte upp.
+
+## Direktlänk till sidan Mats ska göra något på (Mats 2026-11-16)
+
+När Mats ska göra något själv – i Cloudflare, GitHub, Google Play, Firebase, en Claude-miljö
+eller någon annan tjänst – får varje steg en länk direkt till sidan där det görs, inte bara en
+sökväg i menyerna att klicka sig fram efter.
+
+- Länka så djupt det går: repots inställningssida, rätt workflow, rätt Cloudflare-projekt.
+  Kontots id hör till länken i Cloudflare (`https://dash.cloudflare.com/<konto-id>/…`); är det
+  okänt, länka `https://dash.cloudflare.com/?to=/:account/…`, som väljer kontot åt Mats.
+- Menyvägen står kvar efter länken, så att steget går att följa om sidan flyttat.
+- Kunde du inte kontrollera att länken leder rätt, säg det.
 
 ## Modell efter jobbet (Mats 2026-11-10)
 
