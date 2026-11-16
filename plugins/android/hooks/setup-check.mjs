@@ -7,7 +7,8 @@
 // - Samma agentnamn i två repon under en gemensam rot. Agenter får inget prefix, så bara en av
 //   dem laddas – och det är inte säkert att det är den som repots skills menar.
 //
-// Beskeden skrivs till stdout och hamnar i sessionens sammanhang. Inget besked när allt stämmer.
+// Beskeden skrivs till stdout och hamnar i sessionens sammanhang. Inget besked när allt stämmer,
+// men en rad `ok` i beskedloggen, så att veckomätningen ser att kontrollen kört (#87).
 // Kontrollen stoppar aldrig sessionen: går något inte att läsa hoppas den delen över.
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -68,6 +69,7 @@ function main() {
     logBesked('setup-check', 'agent-dubblett', base);
   }
   if (lines.length > 0) process.stdout.write(`${lines.join('\n')}\n`);
+  else logBesked('setup-check', r.status === 0 ? 'ok' : 'plugin-list-oläslig', base);
   return 0;
 }
 

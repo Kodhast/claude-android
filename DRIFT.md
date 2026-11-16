@@ -114,7 +114,7 @@ projektet Generella förbättringar och läser bara; ingen skriver till repona.
 
 | Uppgift | Schema (svensk tid) | Läser | Ger |
 |---|---|---|---|
-| Veckomätning AI-miljön | måndagar 06:56 | alla sju repon, veckans sessioner, `claude plugin list` | dokument "Veckomätning v<NN>": laddning, används, används aldrig, fallgropar, modellval, CI-kostnad |
+| Veckomätning AI-miljön | måndagar 06:56 | alla sju repon, veckans sessioner, `claude plugin list`, beskedloggen i `/mnt/project-files/hooklogg/` (tar bort filer äldre än 14 dagar) | dokument "Veckomätning v<NN>": laddning, används, används aldrig, fallgropar, modellval, CI-kostnad |
 | Veckoläget | måndagar 07:51 | alla sju repon via GitHub | dokument "Veckoläget v<NN>": PR:er, issues, CI, vad som väntar på Mats |
 
 Avstängda 2026-11-10 (#41), kan slås på igen: den gamla veckomätningen och "Veckosammanfattning
