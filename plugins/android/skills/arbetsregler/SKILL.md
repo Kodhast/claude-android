@@ -98,7 +98,12 @@ cron-uttryck och tidsstämplar i filer ändras inte.
 - **Ny tråd när tråden blivit lång (Mats 2026-11-15).** Varje steg läser om hela kontexten, så
   en lång tråd blir dyr per steg (flytten till Kodhast nådde ~330 000 tokens). Byt när något av
   detta inträffar: kontexten passerar **~150 000 tokens**, sammanhanget har komprimerats en
-  gång, eller **tre PR:er** är mergade i tråden – och det finns mer kvar att göra. Byt aldrig
+  gång, eller **tre PR:er** är mergade i tråden – och det finns mer kvar att göra. Efter en
+  komprimering byts tråden bara när det återstår minst en hel PR eller ett nytt beslut; är resten
+  mindre, som att göra klart en pågående PR, görs den klart i samma tråd (Mats 2026-11-16). Skälet
+  är kvaliteten, inte kostnaden – efter komprimeringen är kontexten liten igen – men komprimeringen
+  är en automatisk sammanfattning som tappar beslut, vad som prövats och varför, medan
+  överlämningen i issuet skrivs med avsikt och ligger kvar. Byt aldrig
   mitt i ett steg: pågående PR mergas eller pushas först. Överlämningen skrivs som en kommentar
   i issuet (eller planen): läget, kvarvarande steg i ordning, öppna beslut och fynd, och vad
   som redan körts. I en projekttråd ber tråden koordinatorn starta en ny tråd med länken och
