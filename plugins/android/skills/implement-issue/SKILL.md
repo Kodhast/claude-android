@@ -62,6 +62,10 @@ ramarna, testa bara det unika; nya komponenter får skärmdump ljust + mörkt oc
   vid avsiktlig designändring.
 - **Manifest eller byggfiler ändrade** → lint och release-bygget lokalt före push (kommandona i
   `android-projekt` → Arbetsflöde); de körs inte i PR-flödet (repots `ci-budget`).
+- **Rad tillagd eller ändrad i komponent- eller ramtabellen** i repots `shared-ui-components` →
+  hela `:app:testDebugUnitTest` före push, inte bara de ändrade testerna: `UiConsistencyTest`
+  (ReseApoteket, Dagboken)
+  läser tabellen och kräver skärmdump och `ComponentGallery`-plats för varje rad.
 
 ## 4. Granska – Android-tillägg
 
