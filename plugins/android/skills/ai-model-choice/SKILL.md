@@ -44,6 +44,20 @@ eftersom `inherit` går före variabeln (i äldre versioner, t.ex. 2.1.42, vann 
 modell – då blir även `sonnet`-agenter Opus). Hooken `repo-sync` säger till när variabeln saknas.
 Bara i molnsessioner; lokalt gäller regeln ovan.
 
+## Trådens modell (Mats 2026-11-16)
+
+Den som startar en tråd – koordinatorn eller Mats – väljer modell efter tabellen ovan utifrån
+trådens **hela** uppgift, inte dess första steg.
+
+- **Flera repon, flera lager eller en lång kedja av PR:er → Opus 5.5.** Sonnet är för agenter och
+  enfilsändringar, inte för hela trådar.
+- **Läsning, utredning och att skriva ett issue → Opus 5.5** (eller Haiku i en agent), aldrig Fable.
+- **En Fable-tråd lämnar över** när beslutet som motiverade Fable är taget – planen eller designen
+  klar. Samordning efteråt (skriva in ok, beställa trådar, följa upp) går i en Opus-tråd.
+
+Skäl: veckomätning v47 (claude-android #88) hittade en läsuppgift på Fable, en designtråd som
+fortsatte samordna på Fable och en flytt i sex repon på Sonnet som missade en versionshöjning.
+
 ## Kostnadsspärrar för Fable 5.2
 
 - **Säg först varför.** Innan du byter till Fable 5.2: skriv kort varför uppgiften kräver den och

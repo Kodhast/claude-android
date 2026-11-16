@@ -77,7 +77,7 @@ sökväg i menyerna att klicka sig fram efter.
 ## Modell efter jobbet (Mats 2026-11-10)
 
 Varje tråd, session och agent kör den modell jobbet kräver – lagom kraftig, aldrig kraftigare.
-Tabellen står i skill `ai-model-choice`. Agenter har en egen `model` i frontmattern, aldrig
+Tabellen och hur en tråds modell väljs står i skill `ai-model-choice`. Agenter har en egen `model` i frontmattern, aldrig
 `inherit`: annars granskar en granskare på Fable bara för att tråden råkar gå på Fable.
 Granskare kör Opus 5.5. Detsamma gäller de inbyggda agenttyperna (`Explore`, `Plan`,
 `general-purpose`), som saknar egen modell: ange `model` när de startas (skill
