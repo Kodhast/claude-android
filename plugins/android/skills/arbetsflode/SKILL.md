@@ -112,6 +112,8 @@ Kan du inte köra den är du inte klar.
 - **En push**, när allt är grönt lokalt. Aldrig för att se om CI blir grönt, aldrig en tom commit.
 - PR-texten:
   - vad och varför, `Closes #N` – eller raden `Liten ändring: <varför>`,
+    `Closes #N` (eller `Fixes #N`) på engelska och ett per issue: GitHub stänger bara på sina
+    egna nyckelord, så `Stänger #N` lämnar issuet öppet. Repots PR-mall följer samma form,
   - **Titta först på:** de 1–3 ställen (fil:rad) där ett fel kostar mest – datamodell, codec,
     rules, motor, workflow, hook,
   - **Kan gå sönder:** vad som realistiskt kan gå sönder och hur det skulle märkas, eller
@@ -140,7 +142,8 @@ Kan du inte köra den är du inte klar.
   omkörning mitt i slutar i `startup_failure`), och bara när orsaken är åtgärdad utanför koden.
 - **Merge:** när alla kontroller på senaste commit är gröna (ett hoppat jobb är okej, rött eller
   avbrutet inte) och `mergeable_state` inte är `dirty`, mergar tråden själv enligt
-  `arbetsregler`, med `expectedHeadSha`. Avsluta bevakningen och gå till steg 0 för nästa.
+  `arbetsregler`, med `expectedHeadSha`. Kontrollera att issuet stängdes; står det öppet,
+  stäng det med en kommentar som pekar på PR:en. Avsluta bevakningen och gå till steg 0 för nästa.
 - Skriv en rad i repots lärdomsfil om du lärde dig något om hur Claude bör styras – och i den
   här skillen om det gäller alla repon.
 
