@@ -3,7 +3,7 @@
 Gemensam Claude Code-plugin för Mats projekt. Det mesta är för Android-repona
 ReseApoteket, Dagboken, fonder och biblioteket android-ui: Kotlin, Compose, Navigation 3 och
 arbetssättet kring issues och PR:er. Några delar gäller alla repon, också Husjakt och
-VeckansMat: arbetsreglerna (`arbetsregler`), arbetsflödets stomme (`arbetsflode`), felsökningen (`felsokning`), modellvalet (`ai-model-choice`), uppsättningen för projekttrådar
+VeckansMat: arbetsreglerna (`arbetsregler`), arbetsflödets stomme (`arbetsflode`), felsökningen (`felsokning`), webbapparnas ramar (`webb`), modellvalet (`ai-model-choice`), uppsättningen för projekttrådar
 (`scripts/repo-plugins.mjs`, `repo-hook.mjs`) och sessionsstartens kontroll (`setup-check`). Det som är eget för ett repo stannar i repots `.claude/`, och där
 de krockar gäller repots CLAUDE.md.
 
@@ -30,6 +30,7 @@ Skillsen anropas som `android:<namn>`.
 | `implement-issue` | Android-delarna ovanpå `arbetsflode`: mockup, återbruk och android-ui, datakedjan, versionshöjning, `android:granskare`, emulatortesterna. |
 | `arbetsregler` | Gemensamma arbetsregler för alla Mats projekt: plan i issue och ok bara för större ändringar, små direkt till PR, ärliga svar, agenter med egen modell, driva igenom utan bekräftelsefrågor, en PR i taget, tider i svensk tid, tokentak, agenter vid behov och direktlänk till sidan Mats ska göra något på. Enda källan – repons CLAUDE.md länkar hit. |
 | `felsokning` | Metod för fel som är svåra att hitta, i alla Mats repon: ett kommando som blir rött först, krympa, hypoteser med förutsägelser, mäta en sak i taget, regressionstest före rättningen. Efter Matt Pococks `diagnosing-bugs` (MIT). |
+| `webb` | Webbapparnas ramar (Husjakt, VeckansMat, web-ui): bara Chrome på dator och Android, ingen iOS/Safari/Firefox, ingen hänsyn till skärmläsare, vanlig användbarhet (tryckytor, kontrast, små skärmar). Enda källan – repona länkar hit. |
 | `ai-model-choice` | Modellval för sessioner, agenter och issues i alla Mats projekt: Opus 5.5 som standard, Fable 5.2 bara med skäl och medium/high effort. Enda källan – repons CLAUDE.md länkar hit. |
 | `release` | Versionshöjningen i funktions-PR:en och releasen via `workflow_dispatch`, utan fråga om versionsnumret. |
 | `testing-strategy` | Regel 2 generellt: tester på varje berörd nivå, flaky är en bugg, skärmdumpar, mönster och fallgropar. Repots `testing-strategy` har nivåtabellen, hjälparna och kommandona. |
