@@ -106,7 +106,14 @@ kör `--offline`, och en ny molnsession har inga beroenden), blir det en påminn
 ReseApoteket; därefter 2 s per fil). Faller Gradle av annat skäl står felets första rad i påminnelsen. Spotless körs inte i CI
 (CI-budgeten), så hooken är det som fångar brotten innan push.
 
-Varje besked från hookarna (en regel 4-träff, en Stop-blockering per repo, ett ktlint-brott,
+`hooks/bas-fore-push.mjs` (#97) spärrar `git push` av en arbetsgren som inte innehåller senaste
+basgrenen (`origin/HEAD`, annars `main` eller `master`): PreToolUse på Bash, i alla repon. Den hämtar
+basen (högst 20 sekunder), och ligger grenen efter säger den att `origin/<bas>` ska mergas in och
+kontrollerna köras om, med filerna som krockar när mergen ger konflikt (`git merge-tree`, inget
+skrivs). Hooken mergar aldrig själv. Push till basen, taggar och raderingar rörs inte; går
+hämtningen inte blir det en varning i stället för en spärr. Regeln står i skill `arbetsflode` steg 3.
+
+Varje besked från hookarna (en regel 4-träff, en Stop-blockering per repo, ett ktlint-brott, en push-spärr eller hämtningsvarning,
 en påminnelse, ett fynd i självkontrollen eller självkontrollens ok-rad) skriver en rad till
 beskedloggen: tid, hook, regel och repo, tabbseparerade. Filinnehåll och kod skrivs aldrig, och en
 logg som inte går att skriva stoppar aldrig hooken. Var loggen ligger: `$CLAUDE_HOOKS_LOG` om den är
