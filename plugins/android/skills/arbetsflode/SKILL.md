@@ -88,6 +88,13 @@ grenen, state `all`, och `pull_request_read`). Lita aldrig på ett antagande ell
 
 ### 3. Kontrollerna lokalt
 
+**Basen först:** `git fetch origin <bas>` och `git merge --no-edit origin/<bas>` i grenen, som egna
+kommandon, innan kontrollerna körs – även när grenen nyss skapades, eftersom andra trådar mergar
+under tiden. Konflikt → lös den här enligt steg 6 (Konflikt). Kontrollerna körs på resultatet.
+Pluginens hook `bas-fore-push` spärrar `git push` av en arbetsgren som inte innehåller senaste
+`origin/<bas>` och säger vilka filer som krockar; den mergar aldrig själv. Går hämtningen inte blir
+det en varning, och `mergeable_state` (steg 6) får avgöra.
+
 Kör repots kontroller och issuets **Verifiering** innan push. Det som inte går att köra lokalt
 säger PR:en; CI får bekräfta.
 
@@ -132,7 +139,7 @@ Kan du inte köra den är du inte klar.
   PR:en (`pull_request_read`, `get`) och läs `mergeable_state`. `dirty` → lös konflikten.
   `unknown` → hämta igen. En PR med konflikt får inget nytt CI-utfall – grönt från förut betyder
   inte att den går att merga.
-- **Konflikt:** merga in `origin/<bas>` i grenen – ingen rebase och ingen force-push för att lösa
+- **Konflikt** (här eller redan i steg 3): merga in `origin/<bas>` i grenen – ingen rebase och ingen force-push för att lösa
   en konflikt. Version och ändringslogg: ta basens som de är och tillämpa
   versionsregeln på nytt; höj bara om PR:en är allvarligare. Kod: lös bara när båda sidornas
   avsikt är tydlig, annars fråga Mats med filerna och vad som krockar. Kör kontrollerna, pusha.
@@ -156,4 +163,5 @@ Kan du inte köra den är du inte klar.
 - Bugfix utan test som föll först.
 - Ett rött test borttaget, hoppat, försvagat eller omkört för att bli grönt.
 - Flera pushar för att se CI; merga utan att ha läst `mergeable_state`.
+- Pusha utan att först ha mergat in senaste `origin/<bas>` och kört kontrollerna på resultatet.
 - En agent med annan modell eller effort än issuet anger, utan skäl i PR:en.
