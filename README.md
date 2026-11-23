@@ -31,7 +31,7 @@ Skillsen anropas som `android:<namn>`.
 | `arbetsregler` | Gemensamma arbetsregler för alla Mats projekt: plan i issue och ok bara för större ändringar, små direkt till PR, ärliga svar, agenter med egen modell, driva igenom utan bekräftelsefrågor, en PR i taget, tider i svensk tid, tokentak, agenter vid behov och direktlänk till sidan Mats ska göra något på. Enda källan – repons CLAUDE.md länkar hit. |
 | `felsokning` | Metod för fel som är svåra att hitta, i alla Mats repon: ett kommando som blir rött först, krympa, hypoteser med förutsägelser, mäta en sak i taget, regressionstest före rättningen. Efter Matt Pococks `diagnosing-bugs` (MIT). |
 | `webb` | Webbapparnas ramar (Husjakt, VeckansMat, web-ui): bara Chrome på dator och Android, ingen iOS/Safari/Firefox, ingen hänsyn till skärmläsare, vanlig användbarhet (tryckytor, kontrast, små skärmar). Enda källan – repona länkar hit. |
-| `ai-model-choice` | Modellval för sessioner, agenter och issues i alla Mats projekt: Opus 5.5 som standard, Fable 5.2 bara med skäl och medium/high effort. Enda källan – repons CLAUDE.md länkar hit. |
+| `ai-model-choice` | Modellval för sessioner, agenter och issues i alla Mats projekt: modellen väljs per tråd och uppgift, Opus 5.5 som förval, Fable 5.2 bara med skäl och medium/high effort; vilken modell som helst får skapa en PR. Enda källan – repons CLAUDE.md länkar hit. |
 | `release` | Versionshöjningen i funktions-PR:en och releasen via `workflow_dispatch`, utan fråga om versionsnumret. |
 | `testing-strategy` | Regel 2 generellt: tester på varje berörd nivå, flaky är en bugg, skärmdumpar, mönster och fallgropar. Repots `testing-strategy` har nivåtabellen, hjälparna och kommandona. |
 | `ci-budget` | Regel 5 generellt: ~8 minuter per PR, `changes` + `ci-ok`, emulatorn bara när koden rörs, lint och R8 utanför PR-flödet. Repots `ci-budget` har tabellen över vad som körs när. |
@@ -118,8 +118,8 @@ en påminnelse, ett fynd i självkontrollen eller självkontrollens ok-rad) skri
 beskedloggen: tid, hook, regel och repo, tabbseparerade. Filinnehåll och kod skrivs aldrig, och en
 logg som inte går att skriva stoppar aldrig hooken. Var loggen ligger: `$CLAUDE_HOOKS_LOG` om den är
 satt; annars i projekttrådar en fil per session och dag i `/mnt/project-files/hooklogg/` (den mappen
-överlever tråden, #87); annars `/tmp/claude-hooks.log`. Veckomätningen läser loggen, eftersom
-PostToolUse-beskeden inte syns i sessionens händelseström, och tar bort filer äldre än 14 dagar.
+överlever tråden, #87); annars `/tmp/claude-hooks.log`. Månadsmätningen läser loggen, eftersom
+PostToolUse-beskeden inte syns i sessionens händelseström, och tar bort filer äldre än 40 dagar.
 Självkontrollens ok-rad visar att hookarna alls kördes – utan den går tystnad inte att skilja från
 en hook som aldrig startade.
 

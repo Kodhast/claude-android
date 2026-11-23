@@ -1,6 +1,6 @@
 ---
 name: ai-model-choice
-description: "Modellval för Claude i alla Mats projekt (Android-repona, android-ui, Husjakt, VeckansMat) – Opus 5.5 som standard, Fable 5.2 bara när uppgiften kräver det och då med Medium/High effort. Ladda när arbete planeras, när modell eller effort väljs för sessionen, en agent eller ett issues Agent · modell · effort, och före en dyr uppgift (stor refaktorering, flera agenter, lång session). Trigger-ord: modell, modellval, effort, Opus, Fable, Sonnet, Haiku, /model, dyrt, kostnad, tokens, Agent · modell · effort."
+description: "Modellval för Claude i alla Mats projekt (Android-repona, android-ui, Husjakt, VeckansMat) – modellen väljs per tråd och uppgift, Opus 5.5 som förval, Fable 5.2 bara när uppgiften kräver det och då med Medium/High effort, och vilken modell som helst får skapa en PR. Ladda när arbete planeras, när modell eller effort väljs för sessionen, en agent eller ett issues Agent · modell · effort, och före en dyr uppgift (stor refaktorering, flera agenter, lång session). Trigger-ord: modell, modellval, effort, Opus, Fable, Sonnet, Haiku, /model, dyrt, kostnad, tokens, Agent · modell · effort."
 ---
 
 # Modellval för Claude (läge november 2026)
@@ -10,8 +10,11 @@ agenter som anger modell (issuets **Agent · modell · effort**, agenternas `mod
 
 ## Regeln
 
-- **Standard: Opus 5.5** (`claude-opus-5-5`) – vardagskod, enskilda issues, tester, granskning och
-  rutinändringar.
+- **Modellen väljs per tråd och uppgift** efter tabellen nedan. **Vilken modell som helst får
+  skapa en PR** (Mats 2026-11-23): en PR granskas på sitt innehåll, inte på vilken modell som
+  skrev den, och ingen kontroll i efterhand jämför commits med modellen.
+- **Förval: Opus 5.5** (`claude-opus-5-5`) – vardagskod, enskilda issues, tester, granskning och
+  rutinändringar, när inget i tabellen talar för en annan modell.
 - **Fable 5.2** (`claude-fable-5-2`) **är ok när det behövs, men används försiktigt för kostnadens
   skull.** Bara när uppgiften motiverar det:
   - arkitektur- eller datamodelldesign (flera lager, migrering, backup-kedjan, rules)
@@ -24,7 +27,7 @@ agenter som anger modell (issuets **Agent · modell · effort**, agenternas `mod
 |---|---|
 | Uppslag och läsning – loggar, data, sökningar | Haiku |
 | Små avgränsade ändringar – en fil, en komponent, ett test | Sonnet |
-| Standard: kod, issues, flera lager, datamodell, migrering, granskning | Opus 5.5 |
+| Förval: kod, issues, flera lager, datamodell, migrering, granskning | Opus 5.5 |
 | Väldigt komplexa issues, svår arkitektur, knepiga integrationer, buggar Opus inte klarat | Fable 5.2 · medium/high |
 
 **Agenter** anger alltid en egen `model` efter jobbet, aldrig `inherit` (Mats 2026-11-10: en

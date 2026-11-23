@@ -114,13 +114,18 @@ projektet Generella förbättringar och läser bara; ingen skriver till repona.
 
 | Uppgift | Schema (svensk tid) | Läser | Ger |
 |---|---|---|---|
-| Veckomätning AI-miljön | måndagar 06:56 | alla sju repon, veckans sessioner, `claude plugin list`, beskedloggen i `/mnt/project-files/hooklogg/` (tar bort filer äldre än 14 dagar) | dokument "Veckomätning v<NN>": laddning, används, används aldrig, fallgropar, modellval, CI-kostnad |
+| Månadsmätning AI-miljön | den 1:a varje månad 06:56 | förra månaden: `claude plugin list`, beskedloggen i `/mnt/project-files/hooklogg/` (tar bort filer äldre än 40 dagar), Actions-körningarna i alla åtta repon | dokument "Månadsmätning <år>-<månad>": laddning, hookarnas besked, rött CI, CI-kostnad |
 | Veckoläget | måndagar 07:51 | alla sju repon via GitHub | dokument "Veckoläget v<NN>": PR:er, issues, CI, vad som väntar på Mats |
 
 Avstängda 2026-11-10 (#41), kan slås på igen: den gamla veckomätningen och "Veckosammanfattning
 fonder" väckte en sparad tråd och slutade köras efter 2026-10-19; "Veckosammanfattning Husjakt,
 Dagboken, ReseApoteket" rapporterade samma sak som Veckoläget. En ny uppgift ska starta en ny
 tråd vid varje körning, inte väcka en sparad.
+
+Mätningen gick varje vecka till 2026-11-23 och mäter sedan dess en gång i månaden, bara det som
+går att mäta (Mats 2026-11-23): skills och agenter loggas inte, de andra projektens sessioner
+syns inte härifrån, och vilken modell som gjort en commit kontrolleras inte (skill
+`ai-model-choice`).
 
 ## Rutiner
 
