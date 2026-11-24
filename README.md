@@ -24,7 +24,8 @@ Skillsen anropas som `android:<namn>`.
 | `android-gradle-logic` | Versionskatalog, delad byggkonfiguration, convention plugins, `android-ui` från GitHub Packages. |
 | `firebase-auth` | Google-inloggning med Credential Manager + Firebase Auth. |
 | `mockup` | Mockup före ny GUI. |
-| `ux-granskning` | Designkritik och UX-texter för en skärm, mockup eller skärmdump. Efter Anthropics `design-critique` och `ux-copy`. |
+| `ux-granskning` | Designkritik och UX-texter för en skärm eller webbvy, mockup eller skärmdump. Efter Anthropics `design-critique` och `ux-copy`. Gäller också webbapparna. |
+| `designregler` | Kompositionsreglerna D-1–D-10 för Android och webb: luft som grupperar, en primär handling per vy, en fokuspunkt, hierarki, få val, förval, huvudhandlingen vid tummen – med källor (Material 3, Gestalt, Hick, Nielsen, Refactoring UI). Enda källan – mockup och granskning hänvisar hit. |
 | `arbetsflode` | Arbetsflödets stomme för alla Mats repon: idé till issue (mallen, Agent · modell · effort, stoppet för ok) och issue till PR (förra PR:en via GitHub, test först vid bugg, granskning i rundor, en push, PR-texten, bevakning, `mergeable_state`, konflikter, merge). Enda källan – repons arbetsflödesskills lägger sina steg ovanpå. |
 | `refine-issue` | Android-delarna ovanpå `arbetsflode`: kodgenomgång mot de fem reglerna, Definition of Done, rubrikerna Återbruk, Datasäkerhet och Krav. |
 | `implement-issue` | Android-delarna ovanpå `arbetsflode`: mockup, återbruk och android-ui, datakedjan, versionshöjning, `android:granskare`, emulatortesterna. |

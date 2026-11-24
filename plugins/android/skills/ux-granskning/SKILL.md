@@ -1,14 +1,14 @@
 ---
 name: ux-granskning
-description: "Granskar en Android-skärm, mockup eller skärmdump för användbarhet, visuell hierarki, enhetlighet och UX-texter på svenska (knappar, felmeddelanden, tomma tillstånd, bekräftelser, statusord), och svarar i en kort tabell. Laddas vid granskning, inte när något ska skapas. Trigger-ord: granska skärmen, vad tycker du om, designkritik, UX, användbarhet, texten på knappen, knapptext, felmeddelandet, tomt tillstånd, bekräftelse, ordval, skärmdump, mockupen är klar, Roborazzi-skärmdumpar i PR:en."
+description: "Granskar en Android-skärm eller webbvy, mockup eller skärmdump för användbarhet, visuell hierarki, enhetlighet och UX-texter på svenska (knappar, felmeddelanden, tomma tillstånd, bekräftelser, statusord), och svarar i en kort tabell. Laddas vid granskning, inte när något ska skapas. Trigger-ord: granska skärmen, granska vyn, vad tycker du om, designkritik, UX, användbarhet, texten på knappen, knapptext, felmeddelandet, tomt tillstånd, bekräftelse, ordval, skärmdump, mockupen är klar, Roborazzi-skärmdumpar i PR:en."
 ---
 
 # UX-granskning
 
-Granskar en skärm som den upplevs: vad syns först, når användaren målet och säger texterna det
-de ska. Bygger på Anthropics `design-critique` och `ux-copy` (anthropics/knowledge-work-plugins,
-plugin Design), anpassad till Android, svenska och apparnas komponentkatalog. Repots regler går
-före.
+Granskar en skärm eller vy som den upplevs: vad syns först, når användaren målet och säger texterna
+det de ska. Bygger på Anthropics `design-critique` och `ux-copy` (anthropics/knowledge-work-plugins,
+plugin Design), anpassad till Android, webbapparna, svenska och komponentkatalogen (android-ui,
+web-ui). Kompositionsreglerna D-1–D-10 står i `android:designregler`. Repots regler går före.
 
 ## När
 
@@ -30,16 +30,19 @@ Läs det som finns. Gissa inte på ett utseende du inte sett.
 
 ## Kritik i fem steg
 
-1. **Första intryck.** Vad drar blicken till sig, och är det rätt sak? Syns skärmens syfte direkt?
+1. **Första intryck.** Vad drar blicken till sig, och är det rätt sak (D-4)? Syns skärmens syfte
+   direkt? Vilken är vyns primära handling, och är den ensam (D-3)?
 2. **Användbarhet.** Når användaren målet? Finns onödiga steg? Syns det vad som är klickbart?
    Försvinner information när ett tillstånd ändras?
-3. **Visuell hierarki.** Läsordning, betoning och luft. Konkurrerar två saker om
-   uppmärksamheten? Står det viktigaste högst upp och störst?
+3. **Komposition.** Gå igenom `android:designregler` D-1–D-10: luft (D-1, D-2), en primär (D-3),
+   fokuspunkt och hierarki (D-4, D-5), få val, förval och det ovanliga gömt (D-6–D-8), huvudhandlingen
+   vid tummen (D-9). Ange regelns ID i fyndet.
 4. **Enhetlighet mot katalogen** (regel 4). Samma element ser lika ut och betyder samma sak
    överallt. Ett statuspiller får inte se ut som ett informationspiller, och en avvikelse från
    katalogen är ett fynd, inte en designfråga.
-5. **Tillgänglighet.** Hänvisa till `android:accessibility-compose` och upprepa inte dess regler.
-   Nämn bara det du faktiskt ser, till exempel svag kontrast i mörkt tema.
+5. **Tillgänglighet.** Hänvisa till `android:accessibility-compose` (Android) och `android:webb`
+   (webb) och upprepa inte deras regler. Nämn bara det du faktiskt ser, till exempel svag kontrast i
+   mörkt tema. Skärmläsare granskas inte.
 
 ## UX-texter på svenska
 
@@ -80,7 +83,19 @@ Pröva varje fynd mot bilden eller koden innan det rapporteras. Smak är 🟢 el
 | "ändrad" säger inte vad som ändrats | samma | 🟡 | "14 → 20 st" |
 | "finns redan" i sheeten "Lägg till i packlistan" har svag kontrast i mörkt tema | sheeten, mörkt | 🟡 | Tema-token för sekundär text (se `accessibility-compose`) |
 
+## Webbapparna (Husjakt, VeckansMat, web-ui)
+
+Samma steg och samma utdata. Skillnaderna:
+
+- **Underlag:** skärmdumpar från Playwright (repots skärmdumpskommando, t.ex. Husjakts `/visa`) eller
+  mockupen i Claude Design, och vyns kod (`.svelte`, `public/`) för texter och tillstånd.
+- **Katalogen** är web-ui:s klasser och element (`kh-*`), som följer android-ui. En avvikelse från
+  web-ui eller från android-ui:s utseende är ett fynd (regel 4 här, web-ui regel 1).
+- **Felmeddelanden** går via appens egen felhantering, aldrig en rå undantagstext.
+- **Ramarna** i `android:webb`: bara Chrome, mest telefonen, inget som klipps vid 360 px.
+- Var-kolumnen pekar på bilden eller `fil.svelte:42`.
+
 ## Utanför
 
-Användarundersökningar, research och överlämning till utvecklare. Webbspecifikt (tangentbord,
-ARIA, pixelmått för webben, Figma) gäller inte här.
+Användarundersökningar, research och överlämning till utvecklare. Tangentbordsnavigering, ARIA för
+uppläsning och Figma.
