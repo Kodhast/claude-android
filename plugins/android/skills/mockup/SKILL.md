@@ -57,12 +57,19 @@ När katalogen ändras uppdateras mallen i samma PR som komponenten.
 
 ## Visa och vänta
 
-- Granska mockupen med skill `android:ux-granskning` innan den visas, och rätta de 🔴 fynden.
-  Nämn kvarvarande 🟡 när du visar den.
+- Gå igenom `android:designregler` D-1–D-9 och granska mockupen med skill `android:ux-granskning`
+  innan den visas, och rätta de 🔴 fynden. Nämn kvarvarande 🟡 när du visar den.
+- Säg vilken som är vyns primära handling (D-3) och fokuspunkt (D-4).
 - Ge länken och en eller två meningar om vad som visas och vilka val som är öppna.
 - **Skriv ingen kod innan användaren godkänt** eller bett om ändringar. Ändringar görs i
   samma canvas.
 - Länken läggs i issuet under rubriken **Design**.
+
+## Claude Design (webbapparna, prov från 2026-11-24)
+
+Görs mockupen för en webbapp i Claude Design i stället för en Design-canvas gäller samma regler: ge
+Claude Design reglerna D-1–D-10 ur `android:designregler` och appens katalog (web-ui) med i
+instruktionen, och granska resultatet som ovan innan länken visas.
 
 ## I PR:en
 

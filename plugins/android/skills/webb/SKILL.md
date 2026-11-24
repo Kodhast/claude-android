@@ -28,3 +28,8 @@ de krockar.
   - läsbar kontrast i ljust och mörkt,
   - små telefonskärmar: inget horisontellt rullande, inget som klipps vid 360 px bredd,
   - valt läge syns i mer än färg när det går lätt.
+
+## Komposition
+
+Luft, en primär handling, fokuspunkt och antal val: `android:designregler` (samma regler som Android).
+Granskning av en vy: `android:ux-granskning` → Webbapparna.
